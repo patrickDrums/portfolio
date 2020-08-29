@@ -12,7 +12,7 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" th:href="@{styles/css/main.css}" />
-		<link rel="stylesheet" th:href="@{styles/css/font-awesome.min.css}" />
+		<link rel="stylesheet" th:href="@{styles/css/font-awesome.min.css}"/>
 	</head>
 	<body class="is-preload">
 
@@ -28,8 +28,7 @@
 			<nav id="menu">
 				<ul class="links">
 					<li><a href="index.html">Home</a></li>
-					<li><a href="#">Elements</a></li>
-					<li><a href="#">Generic</a></li>
+					<li><a href="#">Curriculum vitae</a></li>
 				</ul>
 			</nav>
 
@@ -53,28 +52,54 @@
 						<section>
 							<div class="content">
 								<header>
-									<a href="#" class="icon fa-vcard-o"><span class="label">Icon</span></a>
-									<h3>Feugiat consequat</h3>
+									<h3>Portfolio website</h3>
 								</header>
-								<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus.</p>
+								<img th:src="@{images/screenshot-portfolio.png}" width="240" height="135"/>
+								<p>Technieken:</p>
+								<ul>
+									<li>Spring Boot (Java) met Thymeleaf</li>
+									<li>Eclipse</li>
+									<li>Github</li>
+									<li>HTML5/CSS3 (bestaande template aangepast)</li>
+								</ul>
+									
+								<ul class="actions fit">
+									<li><a href="#" class="button primary fit">Github</a></li>
+									<li><a href="#" class="button fit">Demo</a></li>
+								</ul>
 							</div>
 						</section>
 						<section>
 							<div class="content">
 								<header>
-									<a href="#" class="icon fa-files-o"><span class="label">Icon</span></a>
-									<h3>Ante sem integer</h3>
+									<h3>Sorting algorithms</h3>
 								</header>
+								<img th:src="@{images/screenshot-portfolio.png}" width="240" height="135"/>
 								<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus.</p>
+								
+								<ul class="actions fit">
+									<li><a href="#" class="button primary fit">Github</a></li>
+									<li><a href="/greeting" class="button fit">Demo</a></li>
+								</ul>
 							</div>
 						</section>
 						<section>
 							<div class="content">
 								<header>
-									<a href="#" class="icon fa-floppy-o"><span class="label">Icon</span></a>
-									<h3>Ipsum consequat</h3>
+									<h3>Excel Belegger</h3>
 								</header>
-								<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus.</p>
+								<img th:src="@{images/screenshot-portfolio.png}" width="240" height="135"/>
+								<p>Technieken:</p>
+								<ul>
+									<li>C#</li>
+									<li>Visual Studio 2019</li>
+									<li>Github</li>
+								</ul>
+								
+								<ul class="actions fit">
+									<li><a href="https://github.com/patrickDrums/ExcelBelegger" target="_blank" class="button primary fit">Github</a></li>
+									<li><a href="#" class="button fit">Demo</a></li>
+								</ul>
 							</div>
 						</section>
 					</div>
@@ -87,13 +112,14 @@
 					<div class="content">
 						<section>
 							<h3>Wie is Patrick?</h3>
+							<img th:src="@{images/small.jpg}" width="135" height="210"/>
 							<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing. Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing sed feugiat eu faucibus. Integer ac sed amet praesent. Nunc lacinia ante nunc ac gravida.</p>
 						</section>
 						<section>
 							<h4>Links</h4>
 							<ul class="plain">
-								<li><a href="#"><i class="icon fa-linkedin">&nbsp;</i>LinkedIn</a></li>
-								<li><a href="#"><i class="icon fa-github">&nbsp;</i>Github</a></li>
+								<li><a href="https://www.linkedin.com/in/patrick-post-62b8b5104/" target="_blank"><i class="icon fa-linkedin">&nbsp;</i>LinkedIn</a></li>
+								<li><a href="https://github.com/patrickDrums" target="_blank"><i class="icon fa-github">&nbsp;</i>Github</a></li>
 							</ul>
 						</section>
 					</div>
