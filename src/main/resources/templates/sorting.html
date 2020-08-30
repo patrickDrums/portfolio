@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<link rel="stylesheet" th:href="@{styles/css/main.css}" />
+		<link rel="stylesheet" th:href="@{styles/css/sorting.css}" />
+		<link rel="stylesheet" th:href="@{styles/css/font-awesome.min.css}"/>
+	</head>
+	
+	<body>
+	
+		<div th:replace="fragments/main-components :: top">
+	    </div>
+	    
+		<!-- Bar graph sorting -->		  
+	    <section class="wrapper">
+			<div class="inner">
+				<header class="special">
+					<h2 th:text="${type} + ' sort'">Sorteer Algoritme</h2>
+				</header>
+				<div class="highlights">
+					<section>
+						<div class="content">
+							<div class="chart-wrap vertical">
+							  	<div class="grid">
+							  		<div class="bar" th:each="bar : ${bars}" th:style="'--bar-value:' + ${bar.value} + '%'"  th:title="${bar.value}"></div>   
+							  	</div>
+							</div>
+					    </div>
+					</section>
+					<section>
+						<div class="content">
+							<form method="POST" th:action="@{/sortingAlgorithms?refresh=true}">
+							    <button type="submit" name="submit" value="value" class="link-button button primary fit">Refresh</button>
+							</form>
+							<form method="POST" th:action="@{/sortingAlgorithms?sort=true}">
+								<label for="sortAlgoritme">Kies een sorteer algoritme:</label>
+							    <select th:field="*{type}" id="sortAlgoritme" name="sortAlgoritme">
+							    <!-- TODO Zorg dat input waarde dropdown wordt ingelezen als type -->
+								    <option value="quick">Quick sort</option>
+								    <option value="merge">Merge sort</option>
+								    <option value="bubble">Bubble Sort</option>
+							    </select>
+							    <button type="submit" name="submit" value="value" class="link-button button fit">Sorteer</button>
+							</form>
+					    </div>
+					</section>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Footer -->
+			<div th:replace="fragments/main-components :: footer">
+			</div>
+		
+		<!-- Scripts -->
+			<script th:src="@{styles/js/jquery.min.js}"></script>
+			<script th:src="@{styles/js/browser.min.js}"></script>
+			<script th:src="@{styles/js/breakpoints.min.js}"></script>
+			<script th:src="@{styles/js/util.js}"></script>
+			<script th:src="@{styles/js/main.js}"></script>
+	</body>
+</html>

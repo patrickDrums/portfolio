@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<!--
+	Industrious by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Patrick Post - Application Engineer</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" th:href="@{styles/css/main.css}" />
+		<link rel="stylesheet" th:href="@{styles/css/font-awesome.min.css}"/>
+	</head>
+	<body class="is-preload">
+
+		<div th:replace="fragments/main-components :: top">
+	    </div>
+
+		<!-- Highlights -->
+			<section class="wrapper">
+				<div class="inner">
+					<header class="special">
+						<h2>Pagina niet gevonden</h2>
+						<p>De pagina die u probeert te bezoeken bestaat niet op deze website.</p>
+					</header>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<div th:replace="fragments/main-components :: footer">
+			</div>
+
+		<!-- Scripts -->
+			<script th:src="@{styles/js/jquery.min.js}"></script>
+			<script th:src="@{styles/js/browser.min.js}"></script>
+			<script th:src="@{styles/js/breakpoints.min.js}"></script>
+			<script th:src="@{styles/js/util.js}"></script>
+			<script th:src="@{styles/js/main.js}"></script>
+
+	</body>
+</html>
