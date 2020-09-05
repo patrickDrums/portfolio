@@ -7,45 +7,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.sortingalgoriths.Bar;
+import com.example.sortingalgoriths.*;
 
 @Controller
 public class NavigationController {
 	
-	private Bar bars[] = new Bar[100];
+	private Sorter newSorter;
 	
 	@RequestMapping(value = "/sortingAlgorithms", method = { RequestMethod.GET, RequestMethod.POST })
 	public String showSortingAlgorithms(boolean refresh, boolean sort, @RequestParam(name="type", required=false, defaultValue="quick") String type, Model model) {
 		model.addAttribute("type", type);
 		
-		// Generate a new list of bars with random values (heights)
+		newSorter = Sorter.getInstance();
+		
 		if(refresh)
 		{
-			System.out.println(refresh);
-			
-			for(int i = 0; i < bars.length; i++) {
-				bars[i] = new Bar();
-				bars[i].generateRandomValue(1, 300);
-			}
-			
-			model.addAttribute("bars", bars);
-			
-			
+			// Generate a new list of bars with random values (heights)
+			newSorter.refreshChart();
 		}
 		
-		// Needs to be the real sorting algorithm, now it's only changing the first and the last element at random.
+		// Sorts based on the chosen sorting method
 		if(sort)
-		{
-			model.addAttribute("type", type);
-			
-			bars[0] = new Bar();
-			bars[0].generateRandomValue(1, 300);
-			
-			bars[99] = new Bar();
-			bars[99].generateRandomValue(1, 300);
-			
-			model.addAttribute("bars", bars);
+		{	
+			newSorter.bubbleSort();	
 		}
+		
+		model.addAttribute("bars", newSorter.getBars());
 		
 		return "sorting";
 	}
