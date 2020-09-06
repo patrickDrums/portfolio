@@ -29,12 +29,17 @@
 					</section>
 					<section>
 						<div class="content">
-							<form method="POST" th:action="@{/sortingAlgorithms?refresh=true}">
-							    <button type="submit" name="submit" value="value" class="link-button button primary fit">Refresh</button>
-							</form>
-							<form method="POST" th:action="@{/sortingAlgorithms?sort=true}">
+							<ul class="actions fit">
+								<li><a href="/sortingAlgorithms?refresh=true" class="button fit">Refresh</a></li>
+							</ul>
+							<form method="POST" th:object="${algoContainer}" th:action="@{/sortingAlgorithms}">
+								<label for="sortAlgoritme">Kies aantal waarden:</label>
+								<span id="demo"></span>
+								<div class="slidecontainer">
+  									<input th:field="*{numberOfValues}" type="range" min="1" max="100" value="100" class="slider" id="myRange">
+								</div>
 								<label for="sortAlgoritme">Kies een sorteer algoritme:</label>
-							    <select name="sortAlgoritme">
+							    <select th:field="*{algoEnum}">
 								    <option th:each="algoOpt : ${T(com.example.sortingalgoriths.AlgorithmEnum).values()}"
 								    	th:value="${algoOpt}" th:text="${algoOpt.description}"></option>	    
 							    </select>
@@ -56,5 +61,15 @@
 			<script th:src="@{styles/js/breakpoints.min.js}"></script>
 			<script th:src="@{styles/js/util.js}"></script>
 			<script th:src="@{styles/js/main.js}"></script>
+			
+			<script>
+				var slider = document.getElementById("myRange");
+				var output = document.getElementById("demo");
+				output.innerHTML = slider.value;
+				
+				slider.oninput = function() {
+				  output.innerHTML = this.value;
+				}
+			</script>
 	</body>
 </html>

@@ -3,6 +3,8 @@ package com.example.portfolio;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,24 +16,50 @@ public class NavigationController {
 	
 	private Sorter newSorter;
 	
-	@RequestMapping(value = "/sortingAlgorithms", method = { RequestMethod.GET, RequestMethod.POST })
-	public String showSortingAlgorithms(boolean refresh, boolean sort, @RequestParam(name="type", required=false, defaultValue="quick") String type, Model model) {
-		model.addAttribute("type", type);
+	@GetMapping("/sortingAlgorithms")
+	public String showSortingAlgorithms(boolean refresh, Model model) {
 		
 		newSorter = Sorter.getInstance();
-		
+		model.addAttribute("algoContainer", new AlgorithmContainer());
+			
 		if(refresh)
 		{
 			// Generate a new list of bars with random values (heights)
 			newSorter.refreshChart();
 		}
 		
-		// Sorts based on the chosen sorting method
-		if(sort)
-		{	
-			newSorter.bubbleSort();	
-		}
+		model.addAttribute("bars", newSorter.getBars());
 		
+		return "sorting";
+	}
+	
+	@PostMapping("/sortingAlgorithms")
+	public String startSorting(@ModelAttribute("algoContainer") AlgorithmContainer algoContainer, Model model)
+	{
+		newSorter = Sorter.getInstance();
+		
+		if(algoContainer != null)
+		{
+			// Sorts based on the chosen sorting method
+			switch(algoContainer.getAlgoEnum())
+			{
+			case BUBBLE: 
+				newSorter.bubbleSort();	
+				break;
+				
+			case MERGE:
+				
+				break;
+				
+			case QUICK:
+				
+				break;
+				
+			default:
+				// DO NOTHING
+				break;
+			}
+		}
 		model.addAttribute("bars", newSorter.getBars());
 		
 		return "sorting";
