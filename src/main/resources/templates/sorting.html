@@ -34,11 +34,9 @@
 							</form>
 							<form method="POST" th:action="@{/sortingAlgorithms?sort=true}">
 								<label for="sortAlgoritme">Kies een sorteer algoritme:</label>
-							    <select th:field="*{type}" id="sortAlgoritme" name="sortAlgoritme">
-							    <!-- TODO Zorg dat input waarde dropdown wordt ingelezen als type -->
-								    <option value="quick">Quick sort</option>
-								    <option value="merge">Merge sort</option>
-								    <option value="bubble">Bubble Sort</option>
+							    <select name="sortAlgoritme">
+								    <option th:each="algoOpt : ${T(com.example.sortingalgoriths.AlgorithmEnum).values()}"
+								    	th:value="${algoOpt}" th:text="${algoOpt.description}"></option>	    
 							    </select>
 							    <button type="submit" name="submit" value="value" class="link-button button fit">Sorteer</button>
 							</form>
